@@ -26,12 +26,13 @@ Está dirigida a miembros del gimnasio, entrenadores y personal administrativo.
 -ui: contiene componentes reutilizables, como las cards de servicios.
 Desde App.jsx se integran todos los componentes para construir la landing.
 
-**Objetivos y Tecnologías:** : Las metas alcanzadas en esta etapa del proceso son:
+**Objetivos y Tecnologías:**
+Las metas alcanzadas en esta etapa del proceso son:
 -Se desarrolló la primera versión de la landing page.
 -Se logró una apariencia visual acorde con respecto al estilo del gimnasio
 -Se organizó el proyecto por componentes para que sea más fácil de mantener y a su vez para poder seguir ampliandolo.
 -Se construyeron componentes reutilizables
--
+
 Metas alcanzadas en esta fase y detalle del stack utilizado (ej: React, Vite, Tailwind, Shadcn).
 
 **Guía de Instalación:**
