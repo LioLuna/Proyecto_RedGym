@@ -13,7 +13,6 @@ function Navbar() {
         <a href="#">Inicio</a>
         <a href="#">Servicios</a>
         <a href="#">Contacto</a>
-        <a href="#">Novedades</a>
         <a href="#" className="text-red-500">Login</a>
       </div>
 

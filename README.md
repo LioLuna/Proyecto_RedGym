@@ -47,3 +47,7 @@ Metas alcanzadas en esta fase y detalle del stack utilizado (ej: React, Vite, Ta
 5- Abrir en el navegador: http://localhost:5173
 
 (Necesario node.js y npm)
+
+**Lo que se corrigió:**
+-Separación de componentes UI reutilizables: Button, Input, SectionHeader, ServiceItem
+(En el showcase se muestra la utilización de estos componentes)

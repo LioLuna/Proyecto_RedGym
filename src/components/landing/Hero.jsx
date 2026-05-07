@@ -1,5 +1,5 @@
 import gymImg from "@/assets/FondoGym.png";
-
+import Button from "@/components/ui/Button";
 function Hero() {
   return (
     <section
@@ -20,9 +20,9 @@ function Hero() {
           entrenadores certificados y el mejor ambiente para alcanzar tus metas.
         </p>
 
-        <button className="mt-6 text-red-500 border border-red-500 px-6 py-2 rounded hover:bg-red-500 hover:text-white transition"> 
+        <Button variant="outline"> 
             Inscribite ahora
-        </button>
+        </Button>
 
         </div>
     </section>
