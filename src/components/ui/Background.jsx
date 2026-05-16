@@ -2,15 +2,7 @@ import gymImg from "@/assets/FondoGym.png";
 
 function Background ({ children }) {
     return (
-        <section
-        className="
-        min-h-screen
-        bg-cover
-        bg-center
-        flex
-        items-center
-        justify-center
-        "
+        <section className="min-h-screen bg-cover bg-center flex items-center justify-center"
 
         style = {{
             backgroundImage: `
