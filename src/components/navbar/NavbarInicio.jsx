@@ -1,23 +1,59 @@
-import LogoRedGym from "@/assets/LogoRedGym.jpg";
+import Logo from "./Logo";
+import NavMenu from "./NavMenu";
 
-function Navbar() {
+const navItems = [
+  {
+    label:"inicio",
+    to:"/",
+    scrollTop: true,
+  },
+
+  {
+    label:"Servicios",
+    to : "/#servicios",
+  },
+
+  {
+    label:"Contacto",
+    to:"/#contacto",
+  },
+
+  {
+    label:"Planes",
+    to:"/planes",
+
+  },
+  {
+    label:"Login",
+    to:"/login",
+  },
+];
+
+function NavbarInicio(){
   return (
-    <nav className="absolute top-0 left-0 w-full flex justify-between items-center px-10 py-4 text-white z-10">
+    <nav
+    className="
+    fixed
+    top-0
+    left-0
+    w-full
+    flex
+    justify-between
+    items-center
+    px-10
+    py-4
+    text-white
+    z-50
+    bg-black/40
+    backdrop-blur-md
+    "
+    >
+      <Logo />
 
-      <div className="flex items-center gap-2">
-        <img src={LogoRedGym} alt="Logo" className="w-10 h-10 object-contain" />
-        <span className="font-bold">RedGym</span>
-      </div>
-
-      <div className="space-x-6">
-        <a href="#">Inicio</a>
-        <a href="#">Servicios</a>
-        <a href="#">Contacto</a>
-        <a href="#" className="text-red-500">Login</a>
-      </div>
+      <NavMenu items={navItems} />
 
     </nav>
   );
 }
 
-export default Navbar;
+export default NavbarInicio;

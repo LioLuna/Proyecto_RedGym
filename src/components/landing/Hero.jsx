@@ -1,13 +1,12 @@
-import gymImg from "@/assets/FondoGym.png";
+
+import BackgroundSection from "@/components/ui/Background";
 import Button from "@/components/ui/Button";
+import {Link} from "react-router-dom";
+import Background from "../ui/BackGround";
 function Hero() {
   return (
-    <section
-      className="h-screen bg-cover bg-center flex items-center"
-      style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${gymImg})`
-      }}
-    >
+    <Background>
+    
       <div className="max-w-4xl px-16 md:px-24">
         
         <h1 className="text-white text-5xl md:text-6xl lg:text-6xl font-bold leading-none">
@@ -20,12 +19,13 @@ function Hero() {
           entrenadores certificados y el mejor ambiente para alcanzar tus metas.
         </p>
 
+        <Link to="/inscripcion">
         <Button variant="outline"> 
             Inscribite ahora
         </Button>
-
+        </Link>
         </div>
-    </section>
+    </Background>
   );
 }
 

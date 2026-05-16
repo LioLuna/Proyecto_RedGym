@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 import ServiceItem from "@/components/ui/ServiceItem";
 import { servicesData } from "@/data/services";
 import SectionHeader  from "@/components/ui/SectionHeader";
@@ -7,7 +9,7 @@ function Services() {
   return (
     <>
       {/* Header */}
-      <section className="bg-[#0d0d0d] py-16 text-center">
+      <section id="servicios" className="bg-[#0d0d0d] py-16 text-center">
         <SectionHeader
         title="NUESTROS"
         highlight="SERVICIOS"
@@ -30,10 +32,15 @@ function Services() {
             highlight="EMPEZAR?"
             subtitle="Tu primer clase es gratis. Vení a conocer nuestras instalaciones y servicios."
         />
-        
+
+        <Link to="/inscripcion">
+
         <Button variant="primary" className="mt-6">
-          Agendar clase gratis
+          Inscribite Ahora
         </Button>
+        
+        </Link>
+
       </section>
     </>
   );
