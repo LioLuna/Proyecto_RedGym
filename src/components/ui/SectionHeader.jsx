@@ -1,4 +1,10 @@
-function SectionHeader({ title, highlight, subtitle, align = "center" }) {
+function SectionHeader({
+  title,
+  highlight,
+  subtitle,
+  align = "center",
+  highlightClass = "text-red-500"
+}) {
   const alignClass =
     align === "left"
       ? "text-left"
@@ -11,7 +17,9 @@ function SectionHeader({ title, highlight, subtitle, align = "center" }) {
       <h2 className="text-4xl md:text-5xl font-bold text-white">
         {title}{" "}
         {highlight && (
-          <span className="text-red-500">{highlight}</span>
+          <span className={highlightClass}>
+            {highlight}
+          </span>
         )}
       </h2>
 

@@ -17,37 +17,97 @@ If you are developing a production application, we recommend using TypeScript wi
 
 -----------------**Identificación: Proyecto RedGym - Luna Lionel Fabrizzio**-------------
 
-**Descripción técnica**: Este proyecto es una aplicación web desarrollada con React y Vite que tiene como objetivo mejorar la gestión de un gimnasio llamado RedGym, permitiendo mantener ordenada la información de miembros, servicios y novedades. En esta etapa lo que se hizo fue implementar la Landing Page presentando al gimnasio y sus servicios, funcionando como base para futuras funcionalidades como registro e inicio de sesión.
-Está dirigida a miembros del gimnasio, entrenadores y personal administrativo.
+**Descripción del proyecto**: RedGym es una aplicación web desarrollada para la gestión integral de un gimnasio. Permmite a los usuarios registrarse, iniciar sesión, consultar planes disponibles e inscribirse a una membresía o plan. Además, cuenta con un panel de administración para gestionar usuarios, planes, inscripciones, pagos y comunicados. 
 
-**Arquitectura**: Estructura de carpetas: Dentro de src se separan las imagenes en la carpeta assets y los componentes en la carpeta components. Esta última carpeta (components) se dividió por funciones:
--landing: Contiene secciones principales de la pág (Hero, Services, FAQ, Footer y -Showcase).
--navbar:contiene la barra de navegación 
--ui: contiene componentes reutilizables, como las cards de servicios.
-Desde App.jsx se integran todos los componentes para construir la landing.
+**Tecnologias utilizadas**:
+Frontend: React, React Router DOM, Tailwind CSS, Vite
+Backend: Node.js, Express.js, JWT (JSON Web Token),bcrypt
+Base de datos: MySQL
 
-**Objetivos y Tecnologías:**
-Las metas alcanzadas en esta etapa del proceso son:
--Se desarrolló la primera versión de la landing page.
--Se logró una apariencia visual acorde con respecto al estilo del gimnasio
--Se organizó el proyecto por componentes para que sea más fácil de mantener y a su vez para poder seguir ampliandolo.
--Se construyeron componentes reutilizables
+**Requisitos previos antes de ejecutar el proyecto**:
+-Node.js (version 18 o superior)
+-MySQL Server
+-MySQL Workbench (el que se utilizó para este proyecto)
+-Git 
 
-Metas alcanzadas en esta fase y detalle del stack utilizado (ej: React, Vite, Tailwind, Shadcn).
+**Config para la base de datos:**
+Es necesario iniciar o verificar si está iniciado MySQL dentro de "Servicios". 
+Crear una base de datos llamada "redgym"
+Importar la carpeta dump20260620 ubicada en: ./database/dump20260620
+
+**Funcionalidades**:
+Usuarios
+-Registro de usuarios.
+-Inicio de sesión.
+-Autenticación mediante JWT.
+-Roles de usuario y administrador.
+
+Planes
+-Consulta de planes disponibles.
+-Creación de planes.
+-Edición de planes.
+-Gestión desde panel administrativo.
+
+Inscripciones
+-Inscripción a planes.
+-Control de membresías activas.
+-Cálculo automático de fecha de vencimiento.
+
+Pagos
+-Registro automático de pagos.
+Estados:
+  -Pendiente
+  -Aprobado
+  -Rechazado
+-Aprobación automática para pagos con débito y crédito.
+-Gestión manual de pagos en efectivo y transferencia.
+
+Dashboard Administrativo
+-Cantidad de usuarios.
+-Inscripciones activas.
+-Pagos pendientes.
+-Ingresos totales.
+
+Comunicados
+-Envío de comunicados generales.
+-Almacenamiento de notificaciones en base de datos.
+-Consulta de notificaciones por usuario.
+
+Mi Cuenta
+-Datos personales.
+-Plan contratado.
+-Estado de inscripción.
+-Estado del pago.
+-Método de pago.
+-Fecha de vencimiento.
+
 
 **Guía de Instalación:**
-1- Clonar el repositorio con: git clone https://github.com/LioLuna/Proyecto_RedGym.git
+Requisitos: Node.js, MySQL Server, MySQL Workbench (opcional), Git
 
-2-Acceder al directorio del proyecto: **cd Proyecto_RedGym**
+Clonar repo: git clone https://github.com/LioLuna/Proyecto_RedGym
 
-3- Instalar dependencias con: **npm install**
+Restaurar base de datos: Abrir MySQL Workbench y crear una base de datos llamada "redgym". Luego importar la carpeta dump20260620 que se encuentra en ./backend/src/database/dump20260620
 
-4- Ejecutar el entorno de desarrollo con: **npm run dev**
+Instalar dependencias backend: npm install (dentro de la terminal de backend). Luego ejecutar el back con "npm run dev". Servidor: http://localhost:3000
 
-5- Abrir en el navegador: http://localhost:5173
+Instalar dependencias frontend: npm install (dentro de la terminal del frontend). Luego ejecutar el front con "npm run dev". Servidor: http://localhost:5173
 
-(Necesario node.js y npm)
+Utilizar el panel de admin con la cuenta:
+email: admin@email.com
+contraseña: admin123
 
-**Lo que se corrigió:**
--Separación de componentes UI reutilizables: Button, Input, SectionHeader, ServiceItem
-(En el showcase se muestra la utilización de estos componentes)
+No es necesario configurar variables de entorno ya que los archivos .env se encuentran incluidos en el repositorio.
+
+Observaciones
+
+- El usuario administrador de prueba es:
+
+Email: admin@email.com
+Contraseña: admin123
+
+- Los pagos con tarjeta de débito y crédito se aprueban automáticamente.
+
+- Los pagos en efectivo y transferencia quedan pendientes hasta su aprobación por un administrador.
+
+- El sistema impide que un usuario tenga más de una inscripción activa simultáneamente.

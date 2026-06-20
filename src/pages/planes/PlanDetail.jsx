@@ -1,6 +1,5 @@
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-
-import { plans } from "@/data/plans";
 
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
@@ -10,12 +9,27 @@ function PlanDetail() {
 
   const { id } = useParams();
 
-  const plan = plans.find(
-    (p) => p.id === Number(id)
-  );
+  const [plan, setPlan] = useState(null);
+
+  useEffect(() => {
+
+    fetch(
+      `http://localhost:3000/api/v1/planes/${id}`
+    )
+      .then((res) => res.json())
+      .then((data) => setPlan(data))
+      .catch((error) => console.error(error));
+
+  }, [id]);
 
   if (!plan) {
-    return <h1>Plan no encontrado</h1>;
+    return (
+      <Background>
+        <h1 className="text-white">
+          Cargando...
+        </h1>
+      </Background>
+    );
   }
 
   return (
@@ -24,15 +38,15 @@ function PlanDetail() {
       <Card className="max-w-2xl w-full">
 
         <h1 className="text-white text-4xl font-bold">
-          {plan.name}
+          {plan.nombre}
         </h1>
 
         <p className="text-red-500 text-3xl mt-4">
-          {plan.price}
+          ${plan.precio}
         </p>
 
         <p className="text-gray-300 mt-6">
-          {plan.description}
+          {plan.descripcion}
         </p>
 
         <Link to="/inscripcion">

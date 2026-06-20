@@ -30,6 +30,7 @@ function Services() {
         <SectionHeader
             title="¿LISTO/A PARA"
             highlight="EMPEZAR?"
+            highlightClass="text-white"
             subtitle="Tu primer clase es gratis. Vení a conocer nuestras instalaciones y servicios."
         />
 

@@ -12,14 +12,27 @@ function AuthForm({
   bottomLinkText,
   bottomLinkTo,
   isLogin,
+  onSubmit,
+  error,
+  loading = false,
 }) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!onSubmit) {
+      return;
+    }
+
+    const formData = new FormData(event.currentTarget);
+    const values = Object.fromEntries(formData.entries());
+
+    values.termsAccepted = formData.get("termsAccepted") === "on";
+    onSubmit(values);
+  };
+
   return (
     <>
-
-      {/* Tabs */}
-
       <div className="flex justify-between mb-10">
-
         <Link
           to="/login"
           className={
@@ -28,7 +41,7 @@ function AuthForm({
               : "text-white text-lg"
           }
         >
-          Iniciar Sesión
+          Iniciar Sesion
         </Link>
 
         <Link
@@ -41,106 +54,61 @@ function AuthForm({
         >
           Registrarse
         </Link>
-
       </div>
-
-      {/* Header */}
 
       <div className="mb-8">
+        <h2 className="text-white text-4xl font-light">{title}</h2>
 
-        <h2 className="text-white text-4xl font-light">
-          {title}
-        </h2>
-
-        <p className="text-gray-400 mt-2">
-          {subtitle}
-        </p>
-
+        <p className="text-gray-400 mt-2">{subtitle}</p>
       </div>
 
-      {/* Form */}
-
-      <form className="space-y-5">
-
+      <form className="space-y-5" onSubmit={handleSubmit}>
         {fields.map((field) => (
-
           <div key={field.name}>
-
-            <label
-              className="
-                text-white
-                block
-                mb-2
-              "
-            >
-              {field.label}
-            </label>
+            <label className="text-white block mb-2">{field.label}</label>
 
             <Input
+              name={field.name}
               type={field.type}
               placeholder={field.placeholder}
+              autoComplete={field.autoComplete}
+              required={field.required ?? true}
             />
-
           </div>
-
         ))}
 
-        {/* Terms */}
-
         {!isLogin && (
-
           <div className="flex items-start gap-2">
-
             <input
+              name="termsAccepted"
               type="checkbox"
               className="mt-1"
+              required
             />
 
             <p className="text-gray-400 text-sm">
-
-              Acepto los{" "}
-
-              <span className="text-red-500">
-                términos y condiciones
-              </span>
-
+              Acepto los <span className="text-red-500">terminos y condiciones</span>
             </p>
-
           </div>
-
         )}
 
-        {/* Button */}
+        {error && (
+          <p className="rounded border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+            {error}
+          </p>
+        )}
 
-        <Button
-          variant="primary"
-          className="w-full"
-        >
-          {buttonText}
+        <Button type="submit" variant="primary" className="w-full" disabled={loading}>
+          {loading ? "Procesando..." : buttonText}
         </Button>
-
       </form>
 
-      {/* Bottom */}
-
-      <p
-        className="
-          text-gray-400
-          text-center
-          mt-8
-        "
-      >
+      <p className="text-gray-400 text-center mt-8">
         {bottomText}{" "}
-
-        <Link
-          to={bottomLinkTo}
-          className="text-red-500"
-        >
+        <Link to={bottomLinkTo} className="text-red-500">
           {bottomLinkText}
         </Link>
-
       </p>
-
     </>
   );
 }
